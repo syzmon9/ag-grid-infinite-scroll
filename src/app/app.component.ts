@@ -61,10 +61,6 @@ export class AppComponent implements OnInit {
   private createServerSideDatasource(): IServerSideDatasource {
     return {
       getRows: (params) => {
-        this.store.dispatch(
-          loadCars({ limit: 30, offset: params.request.startRow })
-        );
-        debugger;
         console.log(
           '[Datasource] - rows requested by grid: startRow = ' +
             params.request.startRow +
