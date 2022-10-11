@@ -1,6 +1,6 @@
-import { Action, createReducer, on } from "@ngrx/store";
-import { Car } from "../models/car";
-import { loadCars, loadCarsFailed, loadCarsSuccess } from "./cars.actions";
+import { Action, createReducer, on } from '@ngrx/store';
+import { Car } from '../models/car';
+import { loadCars, loadCarsFailed, loadCarsSuccess } from './cars.actions';
 
 export const CARS_REDUCER_KEY = 'CARS_STATE';
 
@@ -11,12 +11,12 @@ export interface CarsState {
 
 export const initialState: CarsState = {
   loading: false,
-  cars: []
-}
+  cars: [],
+};
 
 const reducer = createReducer(
   initialState,
-  on(loadCars, state => ({
+  on(loadCars, (state) => ({
     ...state,
     loading: true,
   })),
@@ -25,12 +25,15 @@ const reducer = createReducer(
     loading: false,
     cars,
   })),
-  on(loadCarsFailed, state => ({
+  on(loadCarsFailed, (state) => ({
     ...state,
     loading: false,
   }))
 );
 
-export function carsReducer(state: CarsState | undefined, action: Action): CarsState {
+export function carsReducer(
+  state: CarsState | undefined,
+  action: Action
+): CarsState {
   return reducer(state, action);
 }
